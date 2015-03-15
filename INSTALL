@@ -1,0 +1,4 @@
+INSTALL
+=======
+
+type 'sudo make install'
