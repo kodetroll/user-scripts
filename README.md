@@ -1,7 +1,7 @@
 user-scripts
 ============
 
-This is a collection of semi-usefule bash user scripts that will provide 
+This is a collection of semi-useful bash user scripts that will provide 
 various bits of information about the system. These contain a mix of scripts
 some intended only for the Raspberry PI, however, most will work on any
 modern linux.
@@ -23,10 +23,6 @@ getMAC.sh	Will return the MAC address of the specified interface, or
 getMemTotal.sh	Will return the amount of total system memory.
 
 getMemFree.sh	Will return the amount of free system memory.
-
-new_bash_script.sh	Will create the shell of a new bash script.
-
-rkey.sh		Will generate a 16 digit hex random key using OpenSSL.
 
 whereis_inc.sh	Will return the path where GCC believes it will find 
 		the specifed include header file.
