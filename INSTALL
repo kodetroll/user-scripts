@@ -1,4 +1,4 @@
 INSTALL
 =======
 
-type 'sudo make install'
+type 'make install'
