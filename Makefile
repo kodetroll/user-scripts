@@ -2,17 +2,17 @@
 # Makefile for user-scripts tool suite
 #
 
+FILES   = chkpkg.sh getCPUSerial.sh getIPAddr.sh getMAC.sh \
+          getMemFree.sh getMemTotal.sh whereis_inc.sh
 
+DEST    = ~/bin
 
-all: none
+all: tools
 
-none:
-	echo "Nothing to make, yet!"
+tools: install
 
 .PHONY: install
 
 install:
-	install *.sh /usr/local/sbin
-	
-clean:
-	rm -rf tmpfile *.o *~
+        install $(FILES) $(DEST)
+
