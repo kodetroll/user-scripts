@@ -14,5 +14,5 @@ tools: install
 .PHONY: install
 
 install:
-        install $(FILES) $(DEST)
+	install $(FILES) $(DEST)
 
