@@ -16,10 +16,13 @@
 # Added to user-scripts tool suite March 2015
 # Ver: 1.0
 #
-IFACE=eth0
+#FACE=eth0
+#IFACE=enxb827ebbed75b
+# Scan sysfs for net if begin with 'e' (ethernet)
+IFACE=`ls /sys/class/net/ | grep ^e`
 if [ ! -z "$1" ]; then
     IFACE=$1
 fi
-OUT=`/sbin/ifconfig ${IFACE} | grep inet | awk -F ' ' '{print $2}' | awk -F ':' '{print $2}'`
+#OUT=`/sbin/ifconfig ${IFACE} | grep "inet " | awk -F ' ' '{print $2}' | awk -F ':' '{print $2}'`
+OUT=`/sbin/ifconfig ${IFACE} | grep "inet " | awk -F ' ' '{print $2}' `
 echo $OUT
-
