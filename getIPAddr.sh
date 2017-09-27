@@ -19,10 +19,13 @@
 #FACE=eth0
 #IFACE=enxb827ebbed75b
 # Scan sysfs for net if begin with 'e' (ethernet)
-IFACE=`ls /sys/class/net/ | grep ^e`
+# Scan sysfs for net if begin with 'e' (ethernet)
+IFACES=`ls /sys/class/net/ | grep ^e`
+IFACE=`echo $IFACES | awk -F ' ' '{print$1}'`
 if [ ! -z "$1" ]; then
     IFACE=$1
 fi
 #OUT=`/sbin/ifconfig ${IFACE} | grep "inet " | awk -F ' ' '{print $2}' | awk -F ':' '{print $2}'`
-OUT=`/sbin/ifconfig ${IFACE} | grep "inet " | awk -F ' ' '{print $2}' `
+#OUT=`/sbin/ifconfig ${IFACE} | grep "inet " | awk -F ' ' '{print $2}' `
+OUT=`/sbin/ip -4 address show ${IFACE} | grep "inet" | awk -F ' ' '{print $2}' | awk -F '/' '{print $1}' `
 echo $OUT
