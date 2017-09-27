@@ -19,12 +19,15 @@
 #
 #IFACE=eth0
 # Scan sysfs for net if begin with 'e' (ethernet)
-IFACE=`ls /sys/class/net/ | grep ^e`
+IFACES=`ls /sys/class/net/ | grep ^e`
+IFACE=`echo $IFACES | awk -F ' ' '{print$1}'`
 if [ ! -z "$1" ]; then
     IFACE=$1
 fi
-
+#echo "IFACE: $IFACE"
 #OUT=`/sbin/ifconfig ${IFACE} | grep encap | awk -F ' ' '{print $5}'`
-OUT=`/sbin/ifconfig ${IFACE} | grep ether | awk -F ' ' '{print $2}'`
+#OUT=`/sbin/ifconfig ${IFACE} | egrep "Ethernet" | awk -F ' ' '{print $2}'`
+OUT=`/sbin/ip addr show ${IFACE} | grep "ether" | awk -F ' ' '{print $2}'`
+
 echo $OUT
 
